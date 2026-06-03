@@ -1,1 +1,159 @@
-<h1>hellow world</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🏠 House Price Prediction</h1>
+    <p>Enter the property and neighborhood details below.</p>
+
+    <form action="/predict" method="post">
+
+        <div class="form-group">
+            <label>Crime Rate in Area</label>
+            <input type="number" step="any" name="CRIM" placeholder="Example: 0.00632" required>
+        </div>
+
+        <div class="form-group">
+            <label>Residential Land Zoned (%)</label>
+            <input type="number" step="any" name="ZN" placeholder="Example: 18" required>
+        </div>
+
+        <div class="form-group">
+            <label>Business Area Ratio</label>
+            <input type="number" step="any" name="INDUS" placeholder="Example: 2.31" required>
+        </div>
+
+        <div class="form-group">
+            <label>Near Charles River?</label>
+            <input type="number" name="CHAS" placeholder="0 = No, 1 = Yes" required>
+        </div>
+
+        <div class="form-group">
+            <label>Air Pollution Level (NOX)</label>
+            <input type="number" step="any" name="NOX" placeholder="Example: 0.538" required>
+        </div>
+
+        <div class="form-group">
+            <label>Average Number of Rooms</label>
+            <input type="number" step="any" name="RM" placeholder="Example: 6.575" required>
+        </div>
+
+        <div class="form-group">
+            <label>Age of Houses (%)</label>
+            <input type="number" step="any" name="AGE" placeholder="Example: 65.2" required>
+        </div>
+
+        <div class="form-group">
+            <label>Distance to Employment Centers</label>
+            <input type="number" step="any" name="DIS" placeholder="Example: 4.09" required>
+        </div>
+
+        <div class="form-group">
+            <label>Highway Accessibility Index</label>
+            <input type="number" name="RAD" placeholder="Example: 1" required>
+        </div>
+
+        <div class="form-group">
+            <label>Property Tax Rate</label>
+            <input type="number" step="any" name="TAX" placeholder="Example: 296" required>
+        </div>
+
+        <div class="form-group">
+            <label>Student-Teacher Ratio</label>
+            <input type="number" step="any" name="PTRATIO" placeholder="Example: 15.3" required>
+        </div>
+
+        <div class="form-group">
+            <label>Neighborhood Rating Score</label>
+            <input type="number" step="any" name="B" placeholder="Example: 396.9" required>
+        </div>
+
+        <div class="form-group">
+            <label>Lower Income Population (%)</label>
+            <input type="number" step="any" name="LSTAT" placeholder="Example: 4.98" required>
+        </div>
+
+        <button type="submit">Predict House Price</button>
+
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
